@@ -9,11 +9,11 @@ function solveEquation(a, b, c) {
   if (discriminant > 0) {
     x1 = ((-b + Math.sqrt(discriminant)) / (2 * a));
     x2 = ((-b - Math.sqrt(discriminant)) / (2 * a));
-    return res = [x1, x2];
+    return x1, x2;
 
   } else if (discriminant == 0) {
     x1 = x2 = (-b / (2 * a));
-    return res = [x1];
+    return x1;
 
   } else if (discriminant < 0) 
     return res = [];
