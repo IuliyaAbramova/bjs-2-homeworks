@@ -3,10 +3,7 @@ function getArrayParams(arr) {
 
   let min = Infinity;
   let max = -Infinity;
-  let sum = arr.reduce(function(result, elem) {
-    return result + elem;
-  }, 0);
-  let avg = sum / arr.length;
+  let sum = 0;
   
   for (let i = 0; i < arr.length; i += 1) {
 
@@ -22,6 +19,7 @@ function getArrayParams(arr) {
 
   }
 
+  let avg = sum / arr.length;
   avg = +avg.toFixed(2);
   
   return { min: min, max: max, avg: avg };
@@ -31,35 +29,39 @@ function getArrayParams(arr) {
 function worker(arr) {
   let sum = 0;
 
-  arr.reduce(function(result, elem) {
-    return sum = result + elem;
-  }, 0)
+  for (let i = 0; i < arr.length; i += 1) {
+    sum += arr[i];
+  }
 
   return sum;
 }
 
 function makeWork(arrOfArr, func) {
+  
   let max = 0;
 
   for (let i = 0; i < arrOfArr.length; i += 1) {
-    let sum = func(arrOfArr[i]);
-    if (sum > max) {
-      max = sum;
+
+    let result = func(arrOfArr[i]);
+    if (result > max) {
+      max = result;
     }
 
   }
   
   return max;
 }
-//console.log(makeWork([[3,7,2], [2,5,8]], worker));
+console.log(makeWork([[3,7,2], [2,5,10]], worker));
 
 // Задание 3
 function worker2(arr) {
+
   let min = Infinity;
   let max = -Infinity;
   let difference;
 
   for (let i = 0; i < arr.length; i += 1) {
+
     if (arr[i] > max) {
       max = arr[i];
 
@@ -72,18 +74,3 @@ function worker2(arr) {
   return difference = max - min;
   
 } 
-
-function makeWork(arrOfArr, worker2) {
-  let max = 0;
-
-  for (let i = 0; i < arrOfArr.length; i += 1) {
-    let result = worker2(arrOfArr[i]);
-    if (result > max) {
-      max = result;
-    }
-
-  }
-  
-  return max;
-}
-console.log(makeWork([[3,7,2], [2,5,8]], worker2));
