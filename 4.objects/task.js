@@ -11,32 +11,35 @@ let studentTwo = new Student('Jon', 'male', 20 );
 let studentThree = new Student('Anna', 'female', 20 );
 let studentFour = new Student('Iuliya', 'female', 22 );
 
-/*console.log(studentThree);
-console.log(studentFour);*/
+//console.log(studentOne);
 
 Student.prototype.setSubject = function(subjectName) {
   this.subject = subjectName;
 }
-/*console.log(Object.getPrototypeOf(studentThree) === Student.prototype);
-console.log(studentThree.setSubject('History'));*/
+
+//console.log(studentOne.setSubject('History'));
 
 // ваш код для остальных методов
 
 Student.prototype.addMark = function(mark) {
   if (this.marks === undefined) {
     this.marks = [mark];
+  } else {
     return this.marks.push(mark);
   } 
 }
-console.log(studentThree.addMark(5));
-console.log(studentThree.addMark(4));
-console.log(studentThree.addMark(5));
+//console.log(studentOne.addMark(5));
+//console.log(studentOne.addMark(3));
+//console.log(studentOne.addMark(4));
 
-Student.prototype.addMarks = function(mark1, mark2, mark3, ...mark) {
-  return this.marks.push(mark1, mark2, mark3, ...mark);
+Student.prototype.addMarks = function(...mark) {
+  if (this.marks != []) {
+    this.marks = [];
+    return this.marks.push(...mark);
+  }
 }
 
-console.log(studentThree.addMarks(5, 4, 5, 5, 4));
+//console.log(studentOne.addMarks(5, 3, 4));
 
 Student.prototype.getAverage = function() {
   return this.marks.reduce((acc, item, index, arr) => {
@@ -48,7 +51,7 @@ Student.prototype.getAverage = function() {
   }, 0);
 }
 
-console.log(studentThree.getAverage());
+//console.log(studentOne.getAverage());
 
 Student.prototype.exclude = function(reason) {
   delete this.subject;
@@ -56,4 +59,4 @@ Student.prototype.exclude = function(reason) {
   return this.excluded = reason;
 }
 
-console.log(studentThree.exclude('low grades'));
+//console.log(studentOne.exclude('low grades'));
