@@ -25,7 +25,7 @@ Student.prototype.addMark = function(mark) {
   if (this.marks === undefined) {
     this.marks = [mark];
   } else {
-    return this.marks.push(mark);
+    this.marks.push(mark);
   } 
 }
 //console.log(studentOne.addMark(5));
@@ -33,9 +33,10 @@ Student.prototype.addMark = function(mark) {
 //console.log(studentOne.addMark(4));
 
 Student.prototype.addMarks = function(...mark) {
-  if (this.marks != []) {
+  if (this.marks === undefined) {
     this.marks = [];
-    return this.marks.push(...mark);
+  } else {
+    this.marks.push(...mark);
   }
 }
 
@@ -56,7 +57,12 @@ Student.prototype.getAverage = function() {
 Student.prototype.exclude = function(reason) {
   delete this.subject;
   delete this.marks;
-  return this.excluded = reason;
+  this.excluded = reason;
 }
 
 //console.log(studentOne.exclude('low grades'));
+/*console.log(studentThree);
+console.log(studentThree.setSubject("Geometry"));
+console.log(studentThree.addMark(2));
+console.log(studentThree.addMark(3));
+console.log(studentThree.addMark(2));*/
