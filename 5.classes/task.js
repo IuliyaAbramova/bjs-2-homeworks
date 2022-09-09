@@ -42,9 +42,6 @@ class Magazine extends PrintEditionItem {
         this.type = "magazine";
     }
 
-    fix() {
-        super.fix();
-    }
 }
 
 class Book extends PrintEditionItem {
@@ -54,9 +51,6 @@ class Book extends PrintEditionItem {
         this.type = "book";
     }
     
-    fix() {
-        super.fix();
-    }
 
 }
 
@@ -99,7 +93,7 @@ const picknick = new FantasticBook ("Аркадий и Борис Стругац
     }
 
     addBook(PrintEditionItem) {
-        if (PrintEditionItem.state) {
+        if (PrintEditionItem.state > 30) {
             this.books.push(PrintEditionItem); 
         }
 
@@ -108,7 +102,7 @@ const picknick = new FantasticBook ("Аркадий и Борис Стругац
     findBookBy(type, value) {
         for (let i = 0; i < this.books.length; i +=1) {
             if (this.books[i][type] === value) {
-                return this.books[i].name;
+                return this.books[i];
             }
         }
 
@@ -118,7 +112,7 @@ const picknick = new FantasticBook ("Аркадий и Борис Стругац
     giveBookByName(bookName) {
         for (let i = 0; i < this.books.length; i +=1) {
             if (this.books[i].name === bookName) {
-                return this.books.splice(i, 1);
+                return this.books.splice(i, 1)[0];
             }
         }
 
