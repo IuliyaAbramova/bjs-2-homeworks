@@ -75,4 +75,11 @@ class AlarmClock {
         this.stop();
         this.alarmCollection = [];
     }
+
+    printAlarms() {
+        this.alarmCollection.forEach(function(id, time) { 
+            console.log(id +", " + time);
+        });
+        
+    }
 }
